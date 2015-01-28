@@ -3,15 +3,15 @@ from ofxstatement.parser import StatementParser
 from ofxstatement.statement import StatementLine
 
 
-class SamplePlugin(Plugin):
-    """Sample plugin (for developers only)
+class BZWBKPlugin(Plugin):
+    """BZWBK plugin
     """
 
     def getParser(self, filename):
-        return SampleParser(filename)
+        return BZWBKParser(filename)
 
 
-class SampleParser(StatementParser):
+class BZWBKParser(StatementParser):
     def __init__(self, filename):
         self.filename = filename
 
@@ -23,7 +23,7 @@ class SampleParser(StatementParser):
         """
         with open(self.filename, "r") as f:
             self.input = f
-            return super(SampleParser, self).parse()
+            return super(BZWBKParser, self).parse()
 
     def split_records(self):
         """Return iterable object consisting of a line per transaction
@@ -33,4 +33,5 @@ class SampleParser(StatementParser):
     def parse_record(self, line):
         """Parse given transaction line and return StatementLine object
         """
+        print(line)
         return StatementLine()
